@@ -74,7 +74,51 @@ void Right() {
   chassis.pid_odom_set(0, 0, 0);
   HoldBalls();
   intake.move(110);
-  chassis.pid_odom_set({{8_in, 26_in, 43_deg}, fwd, 110});
+  chassis.pid_odom_set({{12_in, 26_in, 43_deg}, fwd, 90});
+  chassis.pid_wait();
+
+
+  pros::delay(150);
+
+  chassis.pid_odom_set({{36_in, 12_in, 90_deg}, fwd, 90});
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(180_deg, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-10_in, 90);
+  chassis.pid_wait();
+
+  ScoreTop();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
+  pros::delay(1000);
+
+  MatchLoader.set(true);
+
+  chassis.pid_odom_set({{36_in, -9_in, 180_deg}, fwd, 110});
+  chassis.pid_wait();
+
+  HoldBalls();
+
+  chassis.pid_drive_set(5_in, 120);
+  chassis.pid_wait();
+
+  pros::delay(500);
+
+  chassis.pid_odom_set({{36_in, 12_in, 180_deg}, rev, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-10_in, 90);
+  chassis.pid_wait();
+
+  ScoreTop();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
   // . . .
   // Autonomous code goes here
   // . . .
