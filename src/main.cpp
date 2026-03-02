@@ -5,6 +5,20 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
+void HoldBalls1() {
+    RedirectB.set(false);
+    RedirectT.set(true);
+}
+
+void ScoreTop1() {
+    RedirectB.set(false);
+    RedirectT.set(false);
+}
+
+void ScoreMid1() {
+    RedirectB.set(true);
+    RedirectT.set(true);
+}
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
@@ -58,7 +72,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    {"soloAWP", SoloAWP},
+    {"Left", Left},
+    //{"soloAWP", SoloAWP},
     {"Right", Right},
     {"Left", Left},
     {"PS", ProgSkills}
@@ -237,11 +252,33 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
-    chassis.opcontrol_tank();  // Tank control
-    // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
+    // chassis.opcontrol_tank();  // Tank control
+    chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+      ScoreMid1();
+      intake.move(100);
+    }
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+      intake.move(100);
+      ScoreTop1();
+    }
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+      intake.move(-100);
+    }
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+      HoldBalls1();
+      intake.move(100);
+    }
+    else {
+      intake.move(0);
+    }
+
+    MatchLoader.button_toggle(master.get_digital(DIGITAL_B));
+
+    Descore.button_toggle(master.get_digital(DIGITAL_Y));
 
     // . . .
     // Put more user control code here!
