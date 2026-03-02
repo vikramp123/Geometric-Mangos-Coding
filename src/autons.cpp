@@ -74,13 +74,13 @@ void Right() {
   chassis.pid_odom_set(0, 0, 0);
   HoldBalls();
   intake.move(110);
-  chassis.pid_odom_set({{12_in, 26_in, 43_deg}, fwd, 90});
+  chassis.pid_odom_set({{12_in, 27_in, 43_deg}, fwd, 60});
   chassis.pid_wait();
 
 
   pros::delay(150);
 
-  chassis.pid_odom_set({{36_in, 12_in, 90_deg}, fwd, 90});
+  chassis.pid_odom_set({{36_in, 12_in, 90_deg}, fwd, 110});
   chassis.pid_wait();
 
   chassis.pid_turn_set(180_deg, 90);
@@ -98,15 +98,16 @@ void Right() {
 
   MatchLoader.set(true);
 
-  chassis.pid_odom_set({{36_in, -9_in, 180_deg}, fwd, 110});
+  HoldBalls();
+
+
+  chassis.pid_odom_set({{37_in, -14_in, 180_deg}, fwd, 120});
   chassis.pid_wait();
 
   HoldBalls();
 
-  chassis.pid_drive_set(5_in, 120);
-  chassis.pid_wait();
 
-  pros::delay(500);
+  pros::delay(100);
 
   chassis.pid_odom_set({{36_in, 12_in, 180_deg}, rev, 90});
   chassis.pid_wait();
@@ -119,18 +120,30 @@ void Right() {
   chassis.pid_drive_set(-2_in, 90);
   chassis.pid_wait();
 
+  pros::delay(2500);
+
+  chassis.pid_drive_set(2_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
   // . . .
   // Autonomous code goes here
   // . . .
 }
 
 void Left() {
+  chassis.odom_x_flip();
+  chassis.odom_theta_flip();
+  Right();
   // . . .
   // Autonomous code goes here
   // . . .
 }
 
 void ProgSkills() {
+  
   // . . .
   // Autonomous code goes here
   // . . .
