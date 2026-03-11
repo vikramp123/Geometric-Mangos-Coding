@@ -146,7 +146,10 @@ void ProgSkills() {
   chassis.pid_odom_set(0, 0, 0);
 
   chassis.slew_drive_set(false);  // Disables global slew
+  Descore.set(true);
   chassis.slew_drive_constants_set(5_in, 50);
+
+  //1////////////////////////////////////////
 
   HoldBalls();
   intake.move(110);
@@ -164,39 +167,170 @@ void ProgSkills() {
   pros::delay(1500);
 
   intake.move(10);
-
-  chassis.pid_odom_set({{25_in, 12_in, 180_deg}, rev, 90});
-  chassis.pid_wait();
   
   chassis.pid_drive_set(-10_in, 90);
   chassis.pid_wait();
 
-  ScoreTop();
-  intake.move(110);
+  MatchLoader.set(false);
+
+  chassis.pid_odom_set({{10_in, 30_in, 0_deg}, fwd, 120});
+  chassis.pid_wait_quick();
+
+  //2////////////////////////////////////////
+
+  chassis.pid_drive_set(40_in, 120, true);
+  chassis.pid_wait_quick();
+
+  chassis.pid_odom_set({{21_in, 85_in, 0_deg}, fwd, 120});
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{21_in, 67_in, 0_deg}, rev, 90});
+  chassis.pid_wait();
 
   chassis.pid_drive_set(-2_in, 90);
   chassis.pid_wait();
 
+  ScoreTop();
+
+  intake.move(120);
+
+  MatchLoader.set(true);
+
+  pros::delay(2500);
+
+  intake.move(0);
+
+  HoldBalls();
+
+  intake.move(120);
+
+  chassis.pid_odom_set({{19_in, 90_in, 0_deg}, fwd, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(22_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-1_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(1_in, 90);
+  chassis.pid_wait();
+
+  pros::delay(2500);
+
+  chassis.pid_drive_set(-10_in, 90);
+  chassis.pid_wait();
+
+  intake.move(10);
+
+  chassis.pid_odom_set({{21_in, 67_in, 0_deg}, rev, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
+  ScoreTop();
+  intake.move(120);
+
   MatchLoader.set(false);
 
-  pros::delay(1500);
+  pros::delay(2500);
+
+  intake.move(0);
+
+  //3////////////////////////////////////////
+
 
   chassis.pid_drive_set(10_in, 90);
   chassis.pid_wait();
 
-  intake.move(0);
-
-
-  chassis.pid_odom_set({{10_in, 30_in, 0_deg}, fwd, 120});
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(35_in, 120, true);
+  chassis.pid_odom_set({{-69_in, 72_in, 270_deg}, fwd, 120});
   chassis.pid_wait();
 
   MatchLoader.set(true);
 
-  chassis.pid_odom_set({{26_in, 90_in, 0_deg}, fwd, 120});
+  HoldBalls();
+
+  intake.move(100);
+
+  chassis.pid_odom_set({{-74_in, 85_in, 0_deg}, fwd, 120});
   chassis.pid_wait();
+
+  chassis.pid_drive_set(6_in, 90);
+  chassis.pid_wait();
+
+  pros::delay(1500);
+
+  intake.move(10);
+  
+  chassis.pid_drive_set(-10_in, 90);
+  chassis.pid_wait();
+
+  MatchLoader.set(false);
+
+  ////////////////////////////////////////////////
+
+  chassis.pid_odom_set({{-58_in, 80_in, 0_deg}, fwd, 120});
+  chassis.pid_wait_quick();
+
+  chassis.pid_drive_set(40_in, 120, true);
+  chassis.pid_wait_quick();
+
+  pros::delay(9999999);
+
+  chassis.pid_odom_set({{-5_in, 89_in, 0_deg}, fwd, 120});
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{-5_in, 71_in, 0_deg}, rev, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
+  ScoreTop();
+
+  intake.move(120);
+
+  MatchLoader.set(true);
+
+  pros::delay(2500);
+
+  intake.move(0);
+
+  HoldBalls();
+
+  intake.move(120);
+
+  chassis.pid_odom_set({{-7_in, 94_in, 0_deg}, fwd, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(22_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-1_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(1_in, 90);
+  chassis.pid_wait();
+
+  pros::delay(2500);
+
+  chassis.pid_drive_set(-10_in, 90);
+  chassis.pid_wait();
+
+  intake.move(10);
+
+  chassis.pid_odom_set({{-5_in, 71_in, 0_deg}, rev, 90});
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_wait();
+
+  ScoreTop();
+  intake.move(120);
+  
+  
+  //MatchLoader.set(true);
 
 
 
