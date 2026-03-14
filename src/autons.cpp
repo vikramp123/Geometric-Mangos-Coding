@@ -94,14 +94,14 @@ void Right() {
   chassis.pid_drive_set(-2_in, 90);
   chassis.pid_wait();
 
-  pros::delay(1000);
+  pros::delay(1500);
 
   MatchLoader.set(true);
 
   HoldBalls();
 
 
-  chassis.pid_odom_set({{37_in, -14_in, 180_deg}, fwd, 120});
+  chassis.pid_odom_set({{37_in, -15_in, 180_deg}, fwd, 120});
   chassis.pid_wait();
 
   HoldBalls();
@@ -150,7 +150,6 @@ void ProgSkills() {
   chassis.slew_drive_constants_set(5_in, 50);
 
   //1////////////////////////////////////////
-
   HoldBalls();
   intake.move(110);
 
@@ -184,10 +183,10 @@ void ProgSkills() {
   chassis.pid_odom_set({{21_in, 85_in, 0_deg}, fwd, 120});
   chassis.pid_wait_quick();
 
-  chassis.pid_odom_set({{21_in, 67_in, 0_deg}, rev, 90});
+  chassis.pid_odom_set({{21_in, 67_in, 0_deg}, rev, 120});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-2_in, 90);
+  chassis.pid_drive_set(-5_in, 90);
   chassis.pid_wait();
 
   ScoreTop();
@@ -204,30 +203,24 @@ void ProgSkills() {
 
   intake.move(120);
 
-  chassis.pid_odom_set({{19_in, 90_in, 0_deg}, fwd, 90});
+  chassis.pid_odom_set({{19_in, 90_in, 0_deg}, fwd, 120});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(22_in, 90);
-  chassis.pid_wait();
+  chassis.pid_drive_set(22_in, 120);
+  chassis.pid_wait_quick();
 
-  chassis.pid_drive_set(-1_in, 90);
-  chassis.pid_wait();
+  pros::delay(1500);
 
-  chassis.pid_drive_set(1_in, 90);
-  chassis.pid_wait();
-
-  pros::delay(2500);
+  intake.move(10);
 
   chassis.pid_drive_set(-10_in, 90);
   chassis.pid_wait();
 
-  intake.move(10);
-
   chassis.pid_odom_set({{21_in, 67_in, 0_deg}, rev, 90});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-2_in, 90);
-  chassis.pid_wait();
+  chassis.pid_drive_set(-4_in, 120);
+  chassis.pid_wait_quick();
 
   ScoreTop();
   intake.move(120);
@@ -241,7 +234,7 @@ void ProgSkills() {
   //3////////////////////////////////////////
 
 
-  chassis.pid_drive_set(10_in, 90);
+  chassis.pid_drive_set(10_in, 120);
   chassis.pid_wait();
 
   chassis.pid_odom_set({{-69_in, 72_in, 270_deg}, fwd, 120});
@@ -256,33 +249,30 @@ void ProgSkills() {
   chassis.pid_odom_set({{-74_in, 85_in, 0_deg}, fwd, 120});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(7.5_in, 90);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(-.5_in, 90);
-  chassis.pid_wait();
+  chassis.pid_drive_set(9_in, 120);
+  chassis.pid_wait_quick();
 
   pros::delay(1500);
 
   intake.move(10);
   
-  chassis.pid_drive_set(-20_in, 90);
+  chassis.pid_drive_set(-20_in, 120);
   chassis.pid_wait();
 
   MatchLoader.set(false);
 
   ////////////////////////////////////////////////
 
-  chassis.pid_odom_set({{-58_in, 60_in, 180_deg}, fwd, 120});
+  chassis.pid_odom_set({{-58_in, 60_in, 177_deg}, fwd, 120});
   chassis.pid_wait();
 
   chassis.pid_drive_set(55_in, 120, true);
   chassis.pid_wait();
 
-  chassis.pid_odom_set({{-70_in, -10_in, 180_deg}, fwd, 120});
+  chassis.pid_odom_set({{-68_in, -15_in, 180_deg}, fwd, 120});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-17_in, 90);
+  chassis.pid_drive_set(-22_in, 120);
   chassis.pid_wait();
 
   ScoreTop();
@@ -293,32 +283,55 @@ void ProgSkills() {
 
   pros::delay(2000);
 
-  HoldBalls();
-
-  chassis.pid_odom_set({{-67_in, -20_in, 180_deg}, fwd, 120});
+  chassis.pid_odom_set({{-65_in, -20_in, 180_deg}, fwd, 120});
   chassis.pid_wait();
 
-  chassis.pid_drive_set(8_in, 90);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(-.5_in, 90);
+  chassis.pid_drive_set(8_in, 120);
   chassis.pid_wait();
 
   pros::delay(1500);
 
-  intake.move(10);
-
-  chassis.pid_odom_set({{-70_in, -10_in, 180_deg}, fwd, 120});
+  chassis.pid_drive_set(-9_in, 120);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-17_in, 90);
+  MatchLoader.set(false);
+
+  intake.move(120);
+
+
+  chassis.pid_odom_set({{-30_in, -21_in, 90_deg}, fwd, 120});
   chassis.pid_wait();
+
+  intake.move(-120);
+
+  chassis.pid_drive_set(-9_in, 120);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{-5_in, -21_in, 90_deg}, fwd, 120});
+  chassis.pid_wait();
+
+
+
+
+/*
+  chassis.pid_odom_set({{-71_in, 0_in, 180_deg}, rev, 120});
+  chassis.pid_wait();
+
+  MatchLoader.set(false);
+/*
+  chassis.pid_drive_set(-12_in, 90);
+  chassis.pid_wait_quick();
 
   ScoreTop();
 
   intake.move(120);
-  //MatchLoader.set(true);
 
+  pros::delay(1500);
+
+  chassis.pid_odom_set({{-41_in, -20_in, 90_deg}, fwd, 120});
+  chassis.pid_wait();
+  //MatchLoader.set(true);
+*/
 
 
 
